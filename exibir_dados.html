@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exibição de Dados</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <table id="tabela-dados">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th>Telefone</th>
+        <th>apelido</th>
+      </tr>
+    </thead>
+    <tbody id="tbody-dados">
+    </tbody>
+  </table>
+  <button id="btn-voltar">Voltar</button>
+  <script>
+    const tabela = document.getElementById('tabela-dados');
+    const tbody = document.getElementById('tbody-dados');
+    const dados = JSON.parse(localStorage.getItem('dados'));
+    const btnVoltar = document.getElementById('btn-voltar');
+
+    if (dados) {
+      const listaCadastrados = [];
+      listaCadastrados.push(dados);
+      listaCadastrados.forEach((cadastro) => {
+        const row = tbody.insertRow();
+        const cellNome = row.insertCell();
+        const cellEmail = row.insertCell();
+        const cellTelefone = row.insertCell();
+        const cellapelido = row.insertCell();
+
+        cellNome.textContent = cadastro.nome;
+        cellEmail.textContent = cadastro.email;
+        cellTelefone.textContent = cadastro.telefone;
+        cellapelido.textContent = cadastro.apelido;
+      });
+    }
+
+    btnVoltar.addEventListener('click', () => {
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>
