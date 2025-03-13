@@ -37,7 +37,7 @@
       dados.apelido = document.getElementById('apelido').value;
       localStorage.setItem('dados', JSON.stringify(dados));
       alert('Dados salvos com sucesso!');
-      // enviar pra tela 02
+      window.location.href = 'exibir_dados.html';
     });
     btnApagar.addEventListener('click', () => {
       form.reset();
